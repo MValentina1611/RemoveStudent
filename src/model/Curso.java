@@ -55,6 +55,63 @@ public class Curso {
 		
 	}
 	
+	public int eliminarEstudiantes(String name)
+	{
+		int deleted = 0;
+		
+		if( primerEstudiante != null )
+		{
+			
+			if(primerEstudiante == ultimoEstudiante)//The list has only one element
+			{
+				System.out.println("Tiene  1 elemento");
+				if(primerEstudiante.getNombre().equalsIgnoreCase(name))
+				{
+					primerEstudiante = null;
+					ultimoEstudiante = primerEstudiante;
+					System.out.println("Lo borró");
+					deleted++;
+				}
+				
+			}
+			else//The list has more than one element
+			{
+				System.out.println("Tiene + de 1");
+				if( primerEstudiante.getNombre().equalsIgnoreCase(name))
+				{
+					primerEstudiante = primerEstudiante.getSiguiente();
+					primerEstudiante.setAnterior(null);
+					System.out.println("Era el primero y lo borró");
+					deleted++;
+				}
+				else
+				{
+					System.out.println("No era el primero");
+					Estudiante current = primerEstudiante.getSiguiente();
+					
+					while(current != null)
+					{
+						if(current.getNombre().equalsIgnoreCase(name))
+						{
+							current.getAnterior().setSiguiente(current.getSiguiente());
+							current.getSiguiente().setAnterior(current.getAnterior());
+							System.out.println("Lo encontro y lo borro");
+							deleted++;
+							return deleted;
+						}
+						else
+						{
+							current = current.getSiguiente();
+							System.out.println("No lo encontró y pasó al siguinte");
+						}
+					}
+					
+				}
+			}
+		}
+		return  deleted;
+	}
+	
 	public int size()
 	{
 		int size = 0;

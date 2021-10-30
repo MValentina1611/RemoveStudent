@@ -10,7 +10,7 @@ public class CursoSystem {
 	
 	public static void main(String[] args) 
 	{
-		curso01 = new Curso("APOII", 5);
+		curso01 = new Curso("APOII", 8);
 		
 		addEstudiantesSystem(new Estudiante("Valen", "A01"));
 		addEstudiantesSystem(new Estudiante("Juan", "A02"));
@@ -18,9 +18,13 @@ public class CursoSystem {
 		addEstudiantesSystem(new Estudiante("Andres", "A04"));
 		addEstudiantesSystem(new Estudiante("Luisa", "A05"));
 		addEstudiantesSystem(new Estudiante("Julio", "A06"));
-		
-		System.out.println(curso01.size());
+		addEstudiantesSystem(new Estudiante("Valen", "A07"));
+		//System.out.println(curso01.size());
 	
+		System.out.println(curso01.pintarEstudiantes());
+		System.out.println("-------------------------------------");
+		System.out.println(curso01.eliminarEstudiantes("Valen"));
+		System.out.println("-------------------------------------");
 		System.out.println(curso01.pintarEstudiantes());
 	}
 	
