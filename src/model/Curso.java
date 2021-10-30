@@ -23,7 +23,7 @@ public class Curso {
 			primerEstudiante = newEstudiante;
 			ultimoEstudiante = primerEstudiante;
 		}
-		else//List has one element, at least 
+		else//The List has one element, at least 
 		{
 			if(primerEstudiante == ultimoEstudiante)
 			{
@@ -31,13 +31,28 @@ public class Curso {
 				newEstudiante.setAnterior(primerEstudiante);
 				ultimoEstudiante = newEstudiante;
 			}
-			else
+			else//The List has more than one element
 			{
 				newEstudiante.setAnterior(ultimoEstudiante);
 				ultimoEstudiante.setSiguiente(newEstudiante);
 				ultimoEstudiante = newEstudiante;
 			}
 		}
+	}
+	
+	public String pintarEstudiantes()//Returns String cause we cant't print info from model package
+	{
+		String info = "";
+		Estudiante toPrint = primerEstudiante;
+		do {
+			
+			info += toPrint.toString() + "\n\n";
+			toPrint = toPrint.getSiguiente();
+			
+		}while(toPrint != null);
+		
+		return info;
+		
 	}
 	
 	public int size()

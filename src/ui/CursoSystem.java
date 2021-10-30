@@ -21,6 +21,7 @@ public class CursoSystem {
 		
 		System.out.println(curso01.size());
 	
+		System.out.println(curso01.pintarEstudiantes());
 	}
 	
 	public static void addEstudiantesSystem(Estudiante newEstudiante)
@@ -36,5 +37,4 @@ public class CursoSystem {
 	}
 	
 
-	
 }
