@@ -44,13 +44,18 @@ public class Curso {
 	{
 		String info = "";
 		Estudiante toPrint = primerEstudiante;
-		do {
-			
-			info += toPrint.toString() + "\n\n";
-			toPrint = toPrint.getSiguiente();
-			
-		}while(toPrint != null);
-		
+		if(primerEstudiante == null)
+		{
+			info = "No one has enrolled in the course";
+		}
+		else 
+		{
+			do {
+				info += toPrint.toString() + "\n\n";
+				toPrint = toPrint.getSiguiente();
+
+			}while(toPrint != null);
+		}
 		return info;
 		
 	}
@@ -59,56 +64,53 @@ public class Curso {
 	{
 		int deleted = 0;
 		
-		if( primerEstudiante != null )
+		Estudiante current = primerEstudiante;
+	
+		while( current != null )//Verify if the list is empty
 		{
 			
-			if(primerEstudiante == ultimoEstudiante)//The list has only one element
+			if(current.getNombre().equalsIgnoreCase(name))
 			{
-				System.out.println("Tiene  1 elemento");
-				if(primerEstudiante.getNombre().equalsIgnoreCase(name))
+				if(current == primerEstudiante && primerEstudiante == ultimoEstudiante)//Only one element
 				{
+					System.out.println("entra");
 					primerEstudiante = null;
 					ultimoEstudiante = primerEstudiante;
-					System.out.println("Lo borró");
 					deleted++;
-				}
-				
-			}
-			else//The list has more than one element
-			{
-				System.out.println("Tiene + de 1");
-				if( primerEstudiante.getNombre().equalsIgnoreCase(name))
+					return deleted;
+					
+				}//More than 1 
+				else if(current == primerEstudiante)
 				{
+					
 					primerEstudiante = primerEstudiante.getSiguiente();
 					primerEstudiante.setAnterior(null);
-					System.out.println("Era el primero y lo borró");
 					deleted++;
-				}
-				else
-				{
-					System.out.println("No era el primero");
-					Estudiante current = primerEstudiante.getSiguiente();
+					current = current.getSiguiente();
 					
-					while(current != null)
-					{
-						if(current.getNombre().equalsIgnoreCase(name))
-						{
-							current.getAnterior().setSiguiente(current.getSiguiente());
-							current.getSiguiente().setAnterior(current.getAnterior());
-							System.out.println("Lo encontro y lo borro");
-							deleted++;
-							return deleted;
-						}
-						else
-						{
-							current = current.getSiguiente();
-							System.out.println("No lo encontró y pasó al siguinte");
-						}
-					}
+				}
+				else if( current == ultimoEstudiante )
+				{
+					ultimoEstudiante = ultimoEstudiante.getAnterior();
+					ultimoEstudiante.setSiguiente(null);
+					deleted++;
+					return deleted;
+				}
+				else if( current.getAnterior() != null && current.getSiguiente() != null )//The element is in the middle
+				{
+					deleted++;
+					current.getSiguiente().setAnterior(current.getAnterior());
+					current.getAnterior().setSiguiente(current.getSiguiente());
+					current = current.getSiguiente();
 					
 				}
 			}
+			else
+			{
+				current = current.getSiguiente();//keep searching
+			}
 		}
+		
 		return  deleted;
 	}
 	

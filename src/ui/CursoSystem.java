@@ -12,19 +12,22 @@ public class CursoSystem {
 	{
 		curso01 = new Curso("APOII", 8);
 		
-		addEstudiantesSystem(new Estudiante("Valen", "A01"));
-		addEstudiantesSystem(new Estudiante("Juan", "A02"));
-		addEstudiantesSystem(new Estudiante("Carlos", "A03"));
-		addEstudiantesSystem(new Estudiante("Andres", "A04"));
-		addEstudiantesSystem(new Estudiante("Luisa", "A05"));
-		addEstudiantesSystem(new Estudiante("Julio", "A06"));
-		addEstudiantesSystem(new Estudiante("Valen", "A07"));
-		//System.out.println(curso01.size());
+		//To test:
+		
+		addEstudiantesSystem(new Estudiante("Julio", "A01"));
+		//addEstudiantesSystem(new Estudiante("Valen", "A02"));
+		//addEstudiantesSystem(new Estudiante("Valen", "A03"));
+		//addEstudiantesSystem(new Estudiante("Valen", "A04"));
+		//addEstudiantesSystem(new Estudiante("Daniel", "A05"));
+		//addEstudiantesSystem(new Estudiante("Valen", "A06"));
+		addEstudiantesSystem(new Estudiante("Andres", "A07"));
 	
 		System.out.println(curso01.pintarEstudiantes());
+		
 		System.out.println("-------------------------------------");
-		System.out.println(curso01.eliminarEstudiantes("Valen"));
+		System.out.println( "Deleted Students: "+curso01.eliminarEstudiantes("Julio"));
 		System.out.println("-------------------------------------");
+		
 		System.out.println(curso01.pintarEstudiantes());
 	}
 	
