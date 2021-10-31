@@ -2,16 +2,24 @@ package model;
 
 public class Curso {
 
+	//Attributes
 	private String nombre;
 	
 	private int numEstudiantes;
 	
 	private Estudiante primerEstudiante, ultimoEstudiante;
 	
+	
+	//Builders
 	public Curso(String nombre, int numEstudiantes)
 	{
 		this.nombre = nombre;
 		this.numEstudiantes = numEstudiantes;
+	}
+	
+	public Curso(String nombre, int numEstudiantes, Estudiante newEstudiante)
+	{
+		
 	}
 	
 	//-------------------Methods-----------------------------
@@ -73,7 +81,6 @@ public class Curso {
 			{
 				if(current == primerEstudiante && primerEstudiante == ultimoEstudiante)//Only one element
 				{
-					System.out.println("entra");
 					primerEstudiante = null;
 					ultimoEstudiante = primerEstudiante;
 					deleted++;
@@ -114,6 +121,27 @@ public class Curso {
 		return  deleted;
 	}
 	
+	public void addEstudiantesOrdenadamente(Estudiante newEstudiante)
+	{}
+	
+	//The following methods returns a String cause we can't print info from model
+	public String pintarGeneral()
+	{
+		return "";
+	}
+	
+	public String pintarAtrasAdelanteEstudiantes()
+	{
+		return "";
+	}
+	
+	public String pintarEstudiantesRecursivo(Estudiante estudiante)
+	{
+		return "";
+	}
+	
+	
+	//---------------------------------------------------------------------------------------------------------------
 	public int size()
 	{
 		int size = 0;
@@ -159,9 +187,7 @@ public class Curso {
 		this.primerEstudiante = primerEstudiante;
 	}
 
-	public void setUltimoEstudiante(Estudiante ultimoEstudiante) {
-		this.ultimoEstudiante = ultimoEstudiante;
-	}
+	
 
 	//--------------------------------------------------------
 	
